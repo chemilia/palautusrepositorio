@@ -60,3 +60,28 @@ class PlayerStats:
                 nationality_players.append(player)
 
         return sorted(nationality_players, key=lambda player:player.goals+player.assists, reverse=True)
+
+    def top_scorers_by_team(self, team):
+        """Palauttaa joukkueen pelaajat pistejärjestyksessä."""
+        players = self.reader.get_player()
+
+        team_players = [
+            player for player in players
+            if player.team == team
+        ]
+
+        return sorted(
+            team_players,
+            key=lambda player: player.goals + player.assists,
+            reverse=True
+        )
+
+    def top_goal_scorers(self, how_many):
+        """Palauttaa how_many eniten maaleja tehnyttä pelaajaa maalimäärän mukaan laskevassa järjestyksessä"""
+        players = self.reader.get_player()
+
+        return sorted(
+            players,
+            key=lambda player: player.goals,
+            reverse=True
+        )[:how_many]

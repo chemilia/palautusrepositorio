@@ -1,5 +1,5 @@
 
-"""Näyttää suomalaisten NHL-pelaajien tilastot taulukossa."""
+"""Näyttää halutun NHL-joukkueen pelaajien tilastot taulukossa."""
 
 from rich.console import Console
 from rich.table import Table
@@ -29,11 +29,12 @@ def luo_taulukko(players):
 
 
 def main():
-    """Hakee suomalaiset NHL-pelaajat ja näyttää heidän tilastonsa."""
+    """Hakee valitun joukkueen pelaajat ja näyttää heidän tilastonsa."""
     url = "https://studies.cs.helsinki.fi/nhlstats/2024-25/players"
     reader = PlayerReader(url)
     stats = PlayerStats(reader)
-    players = stats.top_scorers_by_nationality("FIN")
+    team = input("Anna joukkueen tunnus: ").strip().upper()
+    players = stats.top_scorers_by_team(team)
 
     console = Console()
     table = luo_taulukko(players)

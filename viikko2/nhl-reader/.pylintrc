@@ -1,0 +1,31 @@
+[MAIN]
+
+init-hook='import sys; sys.path.append("./src")'
+ignore-paths=src/ui,src/tests,.venv/.*
+
+
+[FORMAT]
+
+# Rivin maksimipituus on 120 merkkiä
+max-line-length=120
+
+# Sisennyksen leveys on 4 välilyöntiä
+indent-string="    "
+
+
+[REFACTORING]
+
+# Sisäkkäisiä lohkoja saa olla enintään 2
+max-nested-blocks=2
+
+
+[DESIGN]
+
+# Funktiossa saa olla enintään 10 lausetta
+max-statements=10
+
+# Oma valitsemani sääntö:
+# Funktiossa saa olla enintään 4 parametria
+max-args=4
+
+disable=too-few-public-methods
